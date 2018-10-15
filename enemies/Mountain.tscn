@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://art/mountain.png" type="Texture" id=1]
+
+[node name="Mountain" type="Node2D"]
+
+[node name="mountain" type="Sprite" parent="."]
+position = Vector2( 0, -100.187 )
+texture = ExtResource( 1 )
+_sections_unfolded = [ "Transform" ]
+

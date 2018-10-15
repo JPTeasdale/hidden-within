@@ -1,0 +1,52 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://art/sword_slash.png" type="Texture" id=1]
+[ext_resource path="res://art/sword.png" type="Texture" id=2]
+
+[node name="Sword" type="Node2D"]
+
+[node name="SlashUp" type="Sprite" parent="."]
+editor/display_folded = true
+position = Vector2( 56.1937, 29.168 )
+texture = ExtResource( 1 )
+
+[node name="HitZone" type="Area2D" parent="SlashUp"]
+position = Vector2( -56.1937, -29.168 )
+input_pickable = true
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+audio_bus_override = false
+audio_bus_name = "Master"
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="SlashUp/HitZone"]
+build_mode = 0
+polygon = PoolVector2Array( 43.3586, -2.42351, 82.0612, 20.5766, 100.108, 62.162, 92.6475, 111.565, 76.5688, 139.841, 103.168, 114.07, 110.683, 74.493, 112.186, 39.9255, 98.5385, -13.1626, 63.6137, -60.5075, 28.7297, -79.5721, 0.459534, -82.9948, 3.59802, -10.024 )
+
+[node name="SlashDown" type="Sprite" parent="."]
+editor/display_folded = true
+position = Vector2( -55.5245, 30.17 )
+texture = ExtResource( 1 )
+flip_h = true
+_sections_unfolded = [ "Offset" ]
+
+[node name="HitZone" type="Area2D" parent="SlashDown"]
+position = Vector2( -56.1937, -29.168 )
+input_pickable = true
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+audio_bus_override = false
+audio_bus_name = "Master"
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="SlashDown/HitZone"]
+build_mode = 0
+polygon = PoolVector2Array( 25.9774, 25.2243, 10.8321, 61.3561, 12.8263, 95.2383, 22.9169, 121.875, 36.6195, 142.103, 15.0869, 123.833, -1.22569, 82.725, -2.5307, 34.4397, 6.60435, -0.795547, 17.2873, -19.4328, 30.747, -42.5558, 43.7971, -54.3009, 60.1097, -67.351, 79.6848, -77.791, 110.523, -82.9057, 106.519, -8.14919, 65.5805, -0.139557 )
+
+[node name="sword" type="Sprite" parent="."]
+texture = ExtResource( 2 )
+offset = Vector2( -0.0534019, -38.6679 )
+_sections_unfolded = [ "Transform" ]
+

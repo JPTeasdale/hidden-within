@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://art/rainbow.png" type="Texture" id=1]
+
+[node name="Rainbow" type="Node2D"]
+
+[node name="rainbow" type="Sprite" parent="."]
+texture = ExtResource( 1 )
+_sections_unfolded = [ "Transform" ]
+

@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://art/bush-lg.png" type="Texture" id=1]
+
+[node name="BushLarge" type="Node2D"]
+
+[node name="bush-lg" type="Sprite" parent="."]
+texture = ExtResource( 1 )
+_sections_unfolded = [ "Transform", "Z Index" ]
+

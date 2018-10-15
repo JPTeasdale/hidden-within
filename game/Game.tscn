@@ -1,0 +1,193 @@
+[gd_scene load_steps=18 format=2]
+
+[ext_resource path="res://game/Game.gd" type="Script" id=1]
+[ext_resource path="res://game/CameraPath.gd" type="Script" id=2]
+[ext_resource path="res://enemies/Rainbow.tscn" type="PackedScene" id=3]
+[ext_resource path="res://enemies/Mountain.tscn" type="PackedScene" id=4]
+[ext_resource path="res://enemies/Sun.tscn" type="PackedScene" id=5]
+[ext_resource path="res://world/World.tscn" type="PackedScene" id=6]
+[ext_resource path="res://enemies/Tree.tscn" type="PackedScene" id=7]
+[ext_resource path="res://character/Character.tscn" type="PackedScene" id=8]
+[ext_resource path="res://enemies/BushLarge.tscn" type="PackedScene" id=9]
+[ext_resource path="res://sword/Sword.tscn" type="PackedScene" id=10]
+[ext_resource path="res://art/rock.png" type="Texture" id=11]
+
+[sub_resource type="Curve2D" id=1]
+
+bake_interval = 5.0
+_data = {
+"points": PoolVector2Array( 0, 0, 0, 0, -388.212, 145.996, -431.955, 101.195, 431.955, -101.195, 478.996, -177.137, 0, 0, 0, 0, 1053.99, -262.299 )
+}
+
+[sub_resource type="ImageTexture" id=2]
+
+flags = 0
+storage = 0
+lossy_quality = 0.7
+flags = 0
+size = Vector2( 16, 16 )
+
+[sub_resource type="RectangleShape2D" id=3]
+
+custom_solver_bias = 0.0
+extents = Vector2( 34.9001, 515.851 )
+
+[sub_resource type="RectangleShape2D" id=4]
+
+custom_solver_bias = 0.0
+extents = Vector2( 34.9001, 515.851 )
+
+[sub_resource type="RectangleShape2D" id=5]
+
+custom_solver_bias = 0.0
+extents = Vector2( 791.54, 30.6513 )
+
+[sub_resource type="CircleShape2D" id=6]
+
+custom_solver_bias = 0.0
+radius = 84.9525
+
+[node name="Game" type="Node2D"]
+script = ExtResource( 1 )
+_sections_unfolded = [ "Transform" ]
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="CameraPath" type="Path2D" parent="."]
+editor/display_folded = true
+self_modulate = Color( 0.5, 0.6, 1, 0.7 )
+position = Vector2( 1082.66, 26.3761 )
+curve = SubResource( 1 )
+script = ExtResource( 2 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="Follow" type="PathFollow2D" parent="CameraPath"]
+position = Vector2( -388.212, 145.996 )
+offset = 0.0
+h_offset = 0.0
+v_offset = 0.0
+rotate = false
+cubic_interp = false
+loop = false
+lookahead = 0.001
+_sections_unfolded = [ "Transform" ]
+__meta__ = {
+"_editor_icon": SubResource( 2 )
+}
+
+[node name="Node2D" type="Node2D" parent="CameraPath/Follow"]
+_sections_unfolded = [ "Transform" ]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="CameraPath/Follow/Node2D"]
+editor/display_folded = true
+input_pickable = false
+collision_layer = 1
+collision_mask = 1
+constant_linear_velocity = Vector2( 0, 0 )
+constant_angular_velocity = 0.0
+friction = 1.0
+bounce = 0.0
+physics_material_override = null
+_sections_unfolded = [ "Transform" ]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CameraPath/Follow/Node2D/StaticBody2D"]
+position = Vector2( -720.076, 64.7516 )
+shape = SubResource( 3 )
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="CameraPath/Follow/Node2D/StaticBody2D"]
+position = Vector2( 715.13, 52.6833 )
+shape = SubResource( 4 )
+_sections_unfolded = [ "shape" ]
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="CameraPath/Follow/Node2D/StaticBody2D"]
+position = Vector2( -22.4382, -456.853 )
+shape = SubResource( 5 )
+
+[node name="Camera2D" type="Camera2D" parent="CameraPath/Follow/Node2D"]
+anchor_mode = 1
+rotating = false
+current = true
+zoom = Vector2( 1, 1 )
+limit_left = -10000000
+limit_top = -10000000
+limit_right = 10000000
+limit_bottom = 10000000
+limit_smoothed = true
+drag_margin_h_enabled = false
+drag_margin_v_enabled = false
+smoothing_enabled = false
+smoothing_speed = 5.0
+offset_v = 0.0
+offset_h = 0.0
+drag_margin_left = 0.2
+drag_margin_top = 0.2
+drag_margin_right = 0.2
+drag_margin_bottom = 0.2
+editor_draw_screen = true
+editor_draw_limits = false
+editor_draw_drag_margin = false
+_sections_unfolded = [ "Editor", "Limit", "Smoothing", "Transform" ]
+
+[node name="Swords" type="Area2D" parent="."]
+editor/display_folded = true
+input_pickable = true
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+collision_mask = 2
+audio_bus_override = false
+audio_bus_name = "Master"
+_sections_unfolded = [ "Collision" ]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Swords"]
+position = Vector2( 2679.53, 140.429 )
+shape = SubResource( 6 )
+
+[node name="Rainbow" parent="." instance=ExtResource( 3 )]
+position = Vector2( 2684.35, 22.3762 )
+
+[node name="Mountain2" parent="." instance=ExtResource( 4 )]
+editor/display_folded = true
+position = Vector2( 2013.12, 59.6185 )
+
+[node name="Sun" parent="Mountain2" instance=ExtResource( 5 )]
+position = Vector2( -415.429, -575.045 )
+
+[node name="Mountain" parent="." instance=ExtResource( 4 )]
+position = Vector2( 2558.26, 72.834 )
+
+[node name="Background" parent="." instance=ExtResource( 6 )]
+position = Vector2( 1424.85, -312.204 )
+_sections_unfolded = [ "Z Index" ]
+
+[node name="Tree2" parent="." instance=ExtResource( 7 )]
+position = Vector2( 1715.57, -66.0298 )
+
+[node name="Tree" parent="." instance=ExtResource( 7 )]
+position = Vector2( 1571.91, -77.0804 )
+
+[node name="Tree3" parent="." instance=ExtResource( 7 )]
+position = Vector2( 1623.48, -51.2954 )
+
+[node name="Character" parent="." instance=ExtResource( 8 )]
+position = Vector2( 529.958, 284.158 )
+_sections_unfolded = [ "Collision", "Z Index" ]
+
+[node name="BushLarge" parent="." instance=ExtResource( 9 )]
+position = Vector2( 1781.87, 143.934 )
+
+[node name="RSword" parent="." instance=ExtResource( 10 )]
+position = Vector2( 2693.75, 142.945 )
+rotation = -2.54415
+
+[node name="LSword" parent="." instance=ExtResource( 10 )]
+position = Vector2( 2670.15, 142.945 )
+rotation = 2.53247
+
+[node name="rock" type="Sprite" parent="."]
+position = Vector2( 2685.06, 196.164 )
+texture = ExtResource( 11 )
+_sections_unfolded = [ "Transform" ]
+
